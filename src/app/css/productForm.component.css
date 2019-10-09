@@ -1,0 +1,12 @@
+div {
+  background-color: lightcoral;
+  border: 2px black solid;
+  font-style:italic;
+}
+:host:hover {
+  font-size: 25px;
+}
+
+:host-context(.angularApp) input {
+  background-color: lightgray;
+}

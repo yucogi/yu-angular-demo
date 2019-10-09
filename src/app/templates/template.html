@@ -1,0 +1,57 @@
+<div [ngClass]="'text-white m-2 p-2 ' + getClasses()">
+  There are {{model.getProducts().length}} products in the model
+</div>
+<div [ngClass]="'text-white m-2 p-2 ' + getClasses()"
+     [textContent]="'Name: ' + (model.getProduct(1)?.name || 'None')">
+</div>
+<div [ngClass]="'text-white m-2 p-2 ' + getClasses()">
+  Name: {{ model.getProduct(1)?.name || 'None' }}
+</div>
+<div class="form-group m-2">
+  <label>Name:</label>
+  <input class="form-control" [value]="model.getProduct(1)?.name || 'None'" />
+</div>
+<table class="table table-sm table-bordered table-striped mt-2">
+  <tr>
+    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+  </tr>
+  <tr>
+    <!--There are some oddities in the HTML and DOM specifications that mean that not all HTML element
+attributes have equivalent properties in the DOM API. For these situations, Angular provides the attribute
+binding, which is used to set an attribute on the host element rather than setting the value of the JavaScript
+object that represents it in the DOM.-->
+    <td [attr.colspan]="model.getProducts().length">
+      {{model.getProduct(1)?.name || 'None'}}
+    </td>
+  </tr>
+</table>
+
+<div class="text-white m-2">
+  <!--This binding evaluates the expression and uses the result to
+replace any existing class memberships.-->
+  <div [class]="getClasses2(1)">
+    The <span [style.fontSize]="fontSizeWithUnits">first</span>
+    product is {{model.getProduct(1).name}}.
+  </div>
+  <div class="p-2"
+       [class.bg-success]="model.getProduct(2).price < 50"
+       [class.bg-info]="model.getProduct(2).price >= 50">
+    The <span [style.fontSize.px]="fontSizeWithoutUnits">second</span>
+    product is {{model.getProduct(2).name}}
+  </div>
+
+  <div class="p-2" [ngClass]="getClassMap(1)">
+    The first product is {{model.getProduct(1).name}}.
+  </div>
+  <div class="p-2" [ngClass]="getClassMap(2)">
+    The second product is {{model.getProduct(2).name}}.
+  </div>
+  <div class="p-2" [ngClass]="{'bg-success': model.getProduct(3).price < 50,
+'bg-info': model.getProduct(3).price >= 50}">
+    The <span [ngStyle]="getStyles(3)">third</span>
+    product is {{model.getProduct(3).name}}
+  </div>
+</div>
+
+
+

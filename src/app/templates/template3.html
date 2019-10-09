@@ -1,0 +1,49 @@
+<div class="text-white m-2">
+  <div class="bg-info p-2">
+    There are {{getProductCount()}} products.
+  </div>
+  <table class="table table-sm table-bordered mt-1">
+    <tr class="text-dark">
+      <th></th><th>Name</th><th>Category</th><th>Price</th>
+    </tr>
+    <tr *ngFor="let item of getProducts(); let i = index; let odd = odd; let first = first; let last = last; trackBy:getKey"
+        [class.bg-primary]="odd" [class.bg-info]="!odd"
+        [class.bg-warning]="first || last">
+      <td>{{i + 1}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.category}}</td>
+      <td *ngIf="!last">{{item.price}}</td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #titleTemplate>
+  <h4 class="p-2 bg-success text-white">Repeated Content</h4>
+</ng-template>
+
+<ng-template #title2Template let-title="title">
+  <h4 class="p-2 bg-success text-white">Repeated Content2</h4>
+</ng-template>
+
+<ng-template [ngTemplateOutlet]="titleTemplate"></ng-template>
+<div class="bg-info p-2 m-2 text-white">
+  There are {{getProductCount()}} products.
+</div>
+<ng-template [ngTemplateOutlet]="title2Template"></ng-template>
+
+<ng-template #title3Template let-text="title2" let-issue="happen">
+  <h4 class="p-2 bg-success text-white">{{text + ':' + issue}}</h4>
+</ng-template>
+<ng-template [ngTemplateOutlet]="title3Template"
+             [ngTemplateOutletContext]="{title2: 'Header',happen: 'yyy'}">
+</ng-template>
+<div class="bg-info p-2 m-2 text-white">
+  There are {{getProductCount()}} products.
+</div>
+<ng-template [ngTemplateOutlet]="title3Template"
+             [ngTemplateOutletContext]="{title2: 'Footer'}">
+</ng-template>
+
+<div class="bg-info p-2">
+  Counter: {{counter = counter + 1}}
+</div>

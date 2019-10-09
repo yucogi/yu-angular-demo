@@ -1,0 +1,8 @@
+<div class="checkbox">
+  <label>
+    <input type="checkbox" [(ngModel)]="showContent" />
+    Show Content
+  </label>
+</div>
+<!-- The important element is ng-content, which Angular will replace with the content of the host element. -->
+<ng-content *ngIf="showContent"></ng-content>

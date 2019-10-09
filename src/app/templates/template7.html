@@ -1,0 +1,74 @@
+<div class="m-2">
+  <div class="bg-info text-white mb-2 p-2">Model Data: {{jsonProduct}}</div>
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" [(ngModel)]="newProduct.name" />
+  </div>
+  <div class="form-group">
+    <label>Category</label>
+    <input class="form-control" [(ngModel)]="newProduct.category" />
+  </div>
+  <div class="form-group">
+    <label>Price</label>
+    <input class="form-control" [(ngModel)]="newProduct.price" />
+  </div>
+  <button class="btn btn-primary" (click)="addProduct(newProduct)">Create</button>
+</div>
+
+<!--These styles set green and red borders for input elements whose content has been edited and is valid
+(and so belong to both the ng-dirty and ng-valid classes) and whose content is invalid (and so belong to
+the ng-dirty and ng-invalid classes).-->
+<style>
+  input.ng-dirty.ng-invalid { border: 2px solid #ff0000 }
+  input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
+</style>
+
+<div class="m-2">
+  <div class="bg-info p-2 mb-2">Model Data: {{jsonProduct}}</div>
+  <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)">
+    <div class="bg-danger text-white p-2 mb-2"
+         *ngIf="formSubmitted && form.invalid">
+      There are problems with the form
+      <ul>
+        <li *ngFor="let error of getFormValidationMessages(form)">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <label>Name</label>
+      <!--create a template reference variable to access the validation state in expressions-->
+      <input class="form-control"
+             name="name"
+             [(ngModel)]="newProduct.name"
+             #name="ngModel"
+             required
+             minlength="5"
+             pattern="^[A-Za-z ]+$" />
+      <ul class="text-danger list-unstyled" *ngIf="name.dirty && name.invalid">
+        <li *ngIf="name.errors.required">
+          You must enter a product name
+        </li>
+        <li *ngIf="name.errors.pattern">
+          Product names can only contain letters and spaces
+        </li>
+        <li *ngIf="name.errors.minlength">
+          Product names must be at least
+          {{name.errors.minlength.requiredLength}} characters
+          {{name.value}}
+        </li>
+      </ul>
+<!--In addition, the ngIf binding has been updated to display the field-level validation messages so that
+they will be shown when the form has been submitted, even if the element itself hasn’t been edited.-->
+      <ul class="text-danger list-unstyled" *ngIf="(formSubmitted || name.dirty) && name.invalid">
+        <li *ngFor="let error of getValidationMessages(name)">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" type="submit">
+      Create
+    </button>
+  </form>
+</div>
