@@ -1,3 +1,4 @@
+/*
 import { Component, Output, EventEmitter, ViewEncapsulation } from "@angular/core";
 import { Product } from '../product.model';
 import { ProductFormGroup } from '../form.model';
@@ -26,3 +27,4 @@ export class ProductFormComponent {
     }
   }
 }
+*/

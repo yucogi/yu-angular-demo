@@ -1,0 +1,2 @@
+github.com/yucogi/yu-angular-demo.git
+ng build --prod --base-href https://yucogi.github.io/yu-angular-demo/

@@ -1,3 +1,4 @@
+/*
 import { Directive, Input, Output, EventEmitter, SimpleChange, ContentChild } from '@angular/core';
 import { PaCellColor } from './cellColor.directive';
 @Directive({
@@ -16,3 +17,4 @@ export class PaCellColorSwitcher {
     }
   }
 }
+*/

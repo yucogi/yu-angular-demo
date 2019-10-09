@@ -1,3 +1,4 @@
+/*
 import { Directive, ElementRef, Attribute } from '@angular/core';
 @Directive({
   selector: "[pa-attr]"
@@ -11,3 +12,4 @@ export class PaAttrDirective {
     element.nativeElement.classList.add(bgClass || "bg-success", "text-white");
   }
 }
+*/

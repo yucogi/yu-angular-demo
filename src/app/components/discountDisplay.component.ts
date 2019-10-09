@@ -10,5 +10,5 @@ export class PaDiscountDisplayComponent {
   // @Input("discounter")
   // discounter: DiscountService;
 
-  constructor(private discounter: DiscountService) { }
+  constructor(public discounter: DiscountService) { }
 }

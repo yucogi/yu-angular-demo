@@ -1,5 +1,5 @@
 import { Directive, Input, Output, EventEmitter, SimpleChange, ContentChildren, QueryList } from '@angular/core';
-import { PaCellColor } from './cellColor.directive';
+import { PaCellColor } from './cellColor2.directive';
 @Directive({
   selector: "table"
 })
